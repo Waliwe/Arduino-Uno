@@ -1,0 +1,221 @@
+#define bot 8
+#define bot2 9
+#define led 10 // reset
+#define bot4 11
+#define bot5 12
+
+#define pi 13
+
+
+#define a 1 // 
+#define b 2 // 
+#define c 3// 
+#define d 4 // 
+#define e 5 // 
+#define f 6 // 
+#define g 7 //
+
+int variavel = 0;
+
+int senha = 14;
+int soma = 0;
+
+void setup() {
+  pinMode(bot,INPUT_PULLUP);
+  pinMode(bot2,INPUT_PULLUP);
+  //pinMode(bot3,INPUT_PULLUP);
+  pinMode(bot4,INPUT_PULLUP);
+  pinMode(bot5,INPUT_PULLUP);
+  pinMode(led,OUTPUT);
+
+  pinMode(pi,OUTPUT);
+
+  pinMode(a,OUTPUT);
+  pinMode(b,OUTPUT);
+  pinMode(c,OUTPUT);
+  pinMode(d,OUTPUT);
+  pinMode(e,OUTPUT);
+  pinMode(f,OUTPUT);
+  pinMode(g,OUTPUT);
+  
+
+}
+
+void loop() {
+
+  //variavel de +
+  
+
+  if (digitalRead(8) == 0) {
+  while (digitalRead(8) == 0){}
+  variavel++;
+  }
+
+  if(variavel == 11){
+  variavel = variavel - 10;
+  }
+
+  // variavel de -
+  if (digitalRead(9) == 0) {
+  while (digitalRead(9) == 0){}
+  variavel--;
+  }
+
+  if(variavel == -1){
+  variavel = variavel + 11;
+  }
+
+  // variavel de reset
+  //if (digitalRead(10) == 0) {
+  //while (digitalRead(10) == 0){}
+  //variavel = 1;
+  //}
+
+  
+  if(variavel == 1){
+  digitalWrite(a, 0);
+  digitalWrite(b, 0);//zero
+  digitalWrite(c, 0);
+  digitalWrite(d, 0);
+  digitalWrite(e, 0);
+  digitalWrite(f, 0);
+  digitalWrite(g, 1);
+  }
+
+  if(variavel == 2){
+  digitalWrite(a, 1);
+  digitalWrite(b, 0);
+  digitalWrite(c, 0);//1
+  digitalWrite(d, 1);
+  digitalWrite(e, 1);
+  digitalWrite(f, 1);
+  digitalWrite(g, 1);
+  }
+
+  if(variavel == 3){
+  digitalWrite(a, 0);
+  digitalWrite(b, 0);
+  digitalWrite(c, 1);//2
+  digitalWrite(d, 0);
+  digitalWrite(e, 0);
+  digitalWrite(f, 1);
+  digitalWrite(g, 0);
+  }
+
+  if(variavel == 4){
+  digitalWrite(a, 0);
+  digitalWrite(b, 0);
+  digitalWrite(c, 0);//3
+  digitalWrite(d, 0);
+  digitalWrite(e, 1);
+  digitalWrite(f, 1);
+  digitalWrite(g, 0);
+  }
+
+  if(variavel == 5){
+  digitalWrite(a, 1);
+  digitalWrite(b, 0);
+  digitalWrite(c, 0);//4
+  digitalWrite(d, 1);
+  digitalWrite(e, 1);
+  digitalWrite(f, 0);
+  digitalWrite(g, 0);
+  }
+
+  if(variavel == 6){
+  digitalWrite(a, 0);
+  digitalWrite(b, 1);
+  digitalWrite(c, 0);//5
+  digitalWrite(d, 0);
+  digitalWrite(e, 1);
+  digitalWrite(f, 0);
+  digitalWrite(g, 0);
+  }
+
+  if(variavel == 7){
+  digitalWrite(a, 0);
+  digitalWrite(b, 1);
+  digitalWrite(c, 0);//6
+  digitalWrite(d, 0);
+  digitalWrite(e, 0);
+  digitalWrite(f, 0);
+  digitalWrite(g, 0);
+  }
+
+  if(variavel == 8){
+  digitalWrite(a, 0);
+  digitalWrite(b, 0);
+  digitalWrite(c, 0);//7
+  digitalWrite(d, 1);
+  digitalWrite(e, 1);
+  digitalWrite(f, 1);
+  digitalWrite(g, 1);
+  }
+
+  if(variavel == 9){
+  digitalWrite(a, 0);
+  digitalWrite(b, 0);
+  digitalWrite(c, 0);//8
+  digitalWrite(d, 0);
+  digitalWrite(e, 0);
+  digitalWrite(f, 0);
+  digitalWrite(g, 0);
+  }
+
+  if(variavel == 10){
+  digitalWrite(a, 0);
+  digitalWrite(b, 0);
+  digitalWrite(c, 0);//9
+  digitalWrite(d, 1);
+  digitalWrite(e, 1);
+  digitalWrite(f, 0);
+  digitalWrite(g, 0);
+  }
+
+  if(variavel==3 && soma==0 && digitalRead(bot4) == 0){
+  soma = soma + variavel - 1; // fica 2
+}
+
+if(variavel==8 && soma==2 && digitalRead(bot4) == 0){
+  soma = soma + variavel - 1; // fica 9
+}
+
+if(variavel==6 && soma==9 && digitalRead(bot4) == 0){
+  soma = soma + variavel - 1; // fica 14
+}
+
+if(digitalRead(12)==0){
+  if(soma==senha){
+  digitalWrite(10,1);
+  }
+}
+
+
+
+if(digitalRead(12)==0){
+  if(soma!=senha){
+  for(int i=1000;i>=100;i=i-100){
+
+  digitalWrite(13,1);
+  delay(i);
+  digitalWrite(13,0);
+  delay(i);
+  }
+  
+  for(int i=100;i>=100;i=i-25){
+
+  digitalWrite(13,1);
+  delay(i);
+  digitalWrite(13,0);
+  delay(i);
+  }
+
+  digitalWrite(13,1);
+  delay(1000);
+  digitalWrite(13,0);
+  delay(100000);
+  }
+
+}
+
+}
